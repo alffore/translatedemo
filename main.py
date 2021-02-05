@@ -3,25 +3,25 @@
 from __future__ import unicode_literals, print_function, division
 from io import open
 import unicodedata
-import string
+
 import re
 import random
 
 import torch
 import torch.nn as nn
 from torch import optim
-import torch.nn.functional as F
 
 import time
 import math
 
+import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-import numpy as np
 
 import encoder as enc
 import attdecoder as dec
-import attdecoder
+
+matplotlib.use('TkAgg')
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -254,7 +254,7 @@ def trainIters(encoder, decoder, n_iters, print_every=1000, plot_every=100, lear
     showPlot(plot_losses)
 
 
-plt.switch_backend('agg')
+# plt.switch_backend('agg')
 
 
 def showPlot(points):
@@ -317,7 +317,7 @@ hidden_size = 256
 encoder1 = enc.EncoderRNN(input_lang.n_words, hidden_size).to(device)
 attn_decoder1 = dec.AttnDecoderRNN(hidden_size, output_lang.n_words, dropout_p=0.1).to(device)
 
-trainIters(encoder1, attn_decoder1, 100000, print_every=5000)
+trainIters(encoder1, attn_decoder1, 200000, print_every=5000)
 
 evaluateRandomly(encoder1, attn_decoder1)
 
