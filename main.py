@@ -21,7 +21,7 @@ import numpy as np
 
 import encoder as enc
 import attdecoder as dec
-import attdecoder
+import decoder
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
