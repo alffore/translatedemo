@@ -20,9 +20,10 @@ import matplotlib.ticker as ticker
 
 import encoder as enc
 import attdecoder as dec
+import decoder
 
 matplotlib.use('TkAgg')
-import decoder
+
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
